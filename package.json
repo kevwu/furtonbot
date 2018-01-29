@@ -1,0 +1,24 @@
+{
+  "name": "furtonbot",
+  "version": "1.0.0",
+  "description": "Erik Furtonbot 3000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevwu/furtonbot.git"
+  },
+  "author": "Kevin Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevwu/furtonbot/issues"
+  },
+  "homepage": "https://github.com/kevwu/furtonbot#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.75.0"
+  }
+}
