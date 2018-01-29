@@ -6,6 +6,7 @@ let app = express()
 let http = require("http")
 
 let secrets = require("./secrets")
+const BOT_ID = secrets.test_bot_id
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
@@ -24,7 +25,7 @@ app.post("/post", (req, res) => {
 				{
 					url: "https://api.groupme.com/v3/bots/post",
 					form: {
-						"bot_id": secrets.bot_id,
+						"bot_id": BOT_ID,
 						"text": "I don't know, can I?",
 					}
 				},
@@ -40,7 +41,7 @@ app.post("/post", (req, res) => {
 				{
 					url: "https://api.groupme.com/v3/bots/post",
 					form: {
-						"bot_id": secrets.bot_id,
+						"bot_id": BOT_ID,
 						"text": "*" + req.body.text.replace('can', 'may')
 					}
 				},
@@ -59,7 +60,7 @@ app.post("/post", (req, res) => {
 				{
 					url: "https://api.groupme.com/v3/bots/post",
 					form: {
-						"bot_id": secrets.bot_id,
+						"bot_id": BOT_ID,
 						"text": "Dolphins do not exist."
 					}
 				},
