@@ -6,7 +6,7 @@ let app = express()
 let http = require("http")
 
 let secrets = require("./secrets")
-const BOT_ID = secrets.test_bot_id
+const BOT_ID = secrets.bot_id
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
@@ -26,7 +26,7 @@ app.post("/post", (req, res) => {
 					url: "https://api.groupme.com/v3/bots/post",
 					form: {
 						"bot_id": BOT_ID,
-						"text": "I don't know, can I?",
+						"text": `I don't know, "can" I?`,
 					}
 				},
 				(err, httpResponse, body) => {
@@ -36,13 +36,13 @@ app.post("/post", (req, res) => {
 					}
 				}
 			)
-		} else if(req.body.text.contains("can")) {
+		} else if(req.body.text.includes("can") || req.body.text.includes("good")) {
 			request.post(
 				{
 					url: "https://api.groupme.com/v3/bots/post",
 					form: {
 						"bot_id": BOT_ID,
-						"text": "*" + req.body.text.replace('can', 'may')
+						"text": "*" + req.body.text.replace('can', 'may').replace('good', 'well')
 					}
 				},
 				(err, httpResponse, body) => {
@@ -51,11 +51,10 @@ app.post("/post", (req, res) => {
 						console.log(err)
 					}
 				}
-
 			)
 		}
 
-		if(req.body.text.toLowerCase().contains('dolphin')) {
+		if(req.body.text.toLowerCase().includes('dolphin')) {
 			request.post(
 				{
 					url: "https://api.groupme.com/v3/bots/post",
